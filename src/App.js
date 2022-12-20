@@ -15,7 +15,11 @@ function App() {
     console.log(count);
     setCount(count);
   } ;
-  let decrement = () => {} ;
+  let decrement = () => {
+    count = count-1;
+    console.log(count);
+    setCount(count);
+  } ;
 
   return (
     <div>
@@ -26,7 +30,9 @@ function App() {
 
       <input type="button" value={values} onClick={bro}  />
 
-      <input type="button" value="Increment" onClick={increment}  />
+      <input type="button" value="Increment" onClick={increment} />
+
+      <input type="button" value="Decrement" onClick={decrement} />
 
     
     
