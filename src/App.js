@@ -1,31 +1,27 @@
-
-import {useState} from "react";
-
-
+import "./App.css";
 
 
 function App() {
-  let [city, setcity] = useState([]);
-
-  let addItems = () => {
-    let textref = document.querySelector("#txt1");
-
-    let newCity = [textref.value , ...city];
-
-    setcity(newCity);
-  };
+  
+  let mystyle = { color: "white", background: "purple" };
 
   return (
     <div>
+      <h1 className="beautify">Hello Again!</h1>
+      {/** This is kind of internal. Note: Only one curly braces. */}
+      <h1 style={mystyle}>Hello World</h1>
 
-      <input type="text" name="" id="txt1" />
-      <input type="button" value="Add City to list"  onClick={addItems}  />
+      {/* THIS IS INLINE STYLING */}
+      <h1 style={{ color: "white", backgroundColor: "red" }}>Hello</h1>
 
-      {city.map((item) => (
-        <h1>{item}</h1>
-      ))}
+      <h1 className="bg-dark text-light p-3">Bootstrap Styling!</h1>
+
+      <h1 className="bg-success" style={{ color: "green" }}>
+        hello
+      </h1>
     </div>
   );
+  
     
 }
 
