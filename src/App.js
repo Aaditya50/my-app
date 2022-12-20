@@ -1,44 +1,30 @@
-import "./App.css";
 
 import {useState} from "react";
 
+
+
+
 function App() {
-  let username = "Aaditya";
-  let password = "Joshi";
-  let values = "Submit";
+  let [city, setcity] = useState([]);
 
-  let [count,setCount] = useState(1);
+  let addItems = () => {
+    let textref = document.querySelector("#txt1");
 
-  let bro = () => alert;
-  let increment = () => {
-    count = count+1;
-    console.log(count);
-    setCount(count);
-  } ;
-  let decrement = () => {
-    count = count-1;
-    console.log(count);
-    setCount(count);
-  } ;
+    let newCity = [textref.value , ...city];
+
+    setcity(newCity);
+  };
 
   return (
     <div>
-      <p>Username :- {username} </p>
-      <p>Password :- {password} </p>
 
-      <h1>{count}</h1>
+      <input type="text" name="" id="txt1" />
+      <input type="button" value="Add City to list"  onClick={addItems}  />
 
-      <input type="button" value={values} onClick={bro}  />
-
-      <input type="button" value="Increment" onClick={increment} />
-
-      <input type="button" value="Decrement" onClick={decrement} />
-
-    
-    
+      {city.map((item) => (
+        <h1>{item}</h1>
+      ))}
     </div>
-
-    
   );
     
 }
