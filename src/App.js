@@ -3,16 +3,8 @@ import {useState} from "react";
 function App() {
   
   let [theme,setTheme] = useState("primary");
-  let primaryThm = () => {
-    theme ="primary";
-    setTheme(theme);
-  }
-  let successThm = () => {
-    theme = "success";
-    setTheme(theme);
-  }
-  let dangerThm = () => {
-    theme = "danger";
+  let changeTheme = (item="primary") => {
+    theme = item;
     setTheme(theme);
   };
 
@@ -27,19 +19,22 @@ function App() {
           className="btn btn-primary"
           type="button"
           value="primary"
-          onClick={primaryThm}
+        //  onClick={primaryThm}
+          onClick={ () => changeTheme("primary") }
         />
         <input
           className="btn btn-success"
           type="button"
           value="success"
-          onClick={successThm}
+         // onClick={successThm}
+          onClick={ () => changeTheme("success") }
         />
         <input
           className="btn btn-danger"
           type="button"
           value="danger"
-          onClick={dangerThm}
+          //onClick={dangerThm}
+          onClick={ () => changeTheme("danger") }
         />
       </div>
     </div>
