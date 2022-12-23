@@ -1,15 +1,19 @@
 import { useState } from "react";
 
 function App() {
+  let [message,setMessage] = useState("hello");
   let [list,setList] = useState([
     { message: "hii", messageTime: new Date() },
     { message: "hii sir", messageTime: new Date() },
     { message: "hii AJ", messageTime: new Date() },
     { message: "hii JerryKing", messageTime: new Date() },
   ]);
-
+  let updateInputMessage = (e) => {
+    message = e.target.value;
+    setMessage(message);
+  };
   let addMessage = () =>{
-    let msg = {message:"chill bhidu",messageTime:new Date()};
+    let msg = {message:message,messageTime:new Date()};
     list = [msg , ...list];
     setList(list);
   }
@@ -18,12 +22,21 @@ function App() {
     <div>
       <h1 className="bg-primary text-white p-3">Msg</h1>
 
-      <input
-        className="btn btn-primary"
-        type="button"
-        value="Add Message"
-        onClick={addMessage}
-      />
+      <div className="d-flex">
+        <input
+          className="form-control"
+          value={message}
+          onChange={updateInputMessage}
+          type="text"
+          placeholder="Enter Message"
+        />
+        <input
+          className="btn btn-primary"
+          type="button"
+          value="Add Message"
+          onClick={addMessage}
+        />
+      </div>
 
       {list.map((item, index) => (
         <div key={index} className="d-flex my-1">
