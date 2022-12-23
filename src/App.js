@@ -1,26 +1,29 @@
 import { useState } from "react";
 
 function App() {
-  let [message, setMessage] = useState("Abc");
-
-  let updateMessage = (e) => {
-    // e.target == document.querySelector("input")
-    message = e.target.value;
-    setMessage(message);
-  };
+  let [list] = useState([
+    { message: "hii", messageTime: new Date() },
+    { message: "hii sir", messageTime: new Date() },
+    { message: "hii AJ", messageTime: new Date() },
+    { message: "hii JerryKing", messageTime: new Date() },
+  ]);
 
   return (
     <div>
-      <h1>Working with Input</h1>
+      <h1 className="bg-primary text-white p-3">Msg</h1>
 
-      <input
-        type="text"
-        placeholder="Enter message"
-        value={message}
-        onChange={updateMessage}
-      />
-
-      <h1>{message}</h1>
+      {list.map((item, index) => (
+        <div key={index} className="d-flex my-1">
+          <div className="badge text-bg-primary">
+            {item.message}
+              
+              <span className="ms-4">
+                {item.messageTime.getHours()} :{item.messageTime.getMinutes()}
+              </span>
+            
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
