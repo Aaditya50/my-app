@@ -1,28 +1,53 @@
-import "./App.css";
-
+import {useState} from "react";
 
 function App() {
   
-  let mystyle = { color: "white", background: "purple" };
+  let [theme,setTheme] = useState("primary");
+  let primaryThm = () => {
+    theme ="primary";
+    setTheme(theme);
+  }
+  let successThm = () => {
+    theme = "success";
+    setTheme(theme);
+  }
+  let dangerThm = () => {
+    theme = "danger";
+    setTheme(theme);
+  };
+
 
   return (
     <div>
-      <h1 className="beautify">Hello Again!</h1>
-      {/** This is kind of internal. Note: Only one curly braces. */}
-      <h1 style={mystyle}>Hello World</h1>
-
-      {/* THIS IS INLINE STYLING */}
-      <h1 style={{ color: "white", backgroundColor: "red" }}>Hello</h1>
-
-      <h1 className="bg-dark text-light p-3">Bootstrap Styling!</h1>
-
-      <h1 className="bg-success" style={{ color: "green" }}>
-        hello
-      </h1>
+      <div className="sticky-top" >
+        <h1 className={`bg-${theme} text-light p-3 `}>
+          Dynamic BootStrap Classes {theme}
+        </h1>
+        <input
+          className="btn btn-primary"
+          type="button"
+          value="primary"
+          onClick={primaryThm}
+        />
+        <input
+          className="btn btn-success"
+          type="button"
+          value="success"
+          onClick={successThm}
+        />
+        <input
+          className="btn btn-danger"
+          type="button"
+          value="danger"
+          onClick={dangerThm}
+        />
+      </div>
     </div>
   );
   
+
+  
     
 }
-
+ 
 export default App;
